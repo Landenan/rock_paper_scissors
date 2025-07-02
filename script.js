@@ -7,33 +7,39 @@ function getComputerChoice() {
     } else {
         return("scissors");
     }
+
+    console.log(getComputerChoice());
 }
 
 function getHumanChoice() {
     let userChoice = prompt("What's your choice? Rock, Paper or Scissors?");
     let userLower = userChoice.toLowerCase();
     return(userLower);
+    console.log(getHumanChoice());
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(getComputerChoice, getHumanChoice) {
-    let think = getHumanChoice();
-    let cpu = getComputerChoice();
 
-    if ((think === "rock" && cpu === "paper") || (think === "paper" && cpu === "scissors") ||
-        (think === "scissors" && cpu === "rock")) {
-            return(0);
-    } else if ((think === "rock" && cpu === "scissors") || (think === "paper" && cpu === "rock") || 
-        (think === "scissors" && cpu === "paper")) {
-            return(1);
-    } else {
-        return(2);
+
+function playGame() {
+
+    function playRound() {
+        let think = getHumanChoice();
+        let cpu = getComputerChoice();
+
+        if ((think === "rock" && cpu === "paper") || (think === "paper" && cpu === "scissors") ||
+            (think === "scissors" && cpu === "rock")) {
+                return(0);
+        } else if ((think === "rock" && cpu === "scissors") || (think === "paper" && cpu === "rock") || 
+            (think === "scissors" && cpu === "paper")) {
+                return(1);
+        } else {
+            return(2);
+        }
     }
-}
 
-function playGame(playRound) {
     for(let i = 0; i < 5; i++) {
         if (playRound(0)){
             computerScore += 1;
@@ -52,3 +58,5 @@ function playGame(playRound) {
         console.log("Wow! You won!");
     }
 }
+
+playGame();
