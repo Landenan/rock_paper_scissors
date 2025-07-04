@@ -1,33 +1,29 @@
 function getComputerChoice() {
     let num = Math.floor(Math.random()*3);
     if (num === 0) {
-        return("rock");
+        console.log("rock");
     } else if (num === 1) {
-        return("paper");
+        console.log("paper");
     } else {
-        return("scissors");
+        console.log("scissors");
     }
-
-    console.log(getComputerChoice());
+    
 }
 
 function getHumanChoice() {
     let userChoice = prompt("What's your choice? Rock, Paper or Scissors?");
     let userLower = userChoice.toLowerCase();
-    return(userLower);
-    console.log(getHumanChoice());
+    console.log(userLower);
 }
 
 let humanScore = 0;
 let computerScore = 0;
-
-
+let think = getHumanChoice();
+let cpu = getComputerChoice();
 
 function playGame() {
 
-    function playRound() {
-        let think = getHumanChoice();
-        let cpu = getComputerChoice();
+    function playRound(think, cpu) {
 
         if ((think === "rock" && cpu === "paper") || (think === "paper" && cpu === "scissors") ||
             (think === "scissors" && cpu === "rock")) {
@@ -40,7 +36,7 @@ function playGame() {
         }
     }
 
-    for(let i = 0; i < 5; i++) {
+    for(let i = 1; i <= 5; i++) {
         if (playRound(0)){
             computerScore += 1;
             console.log("One round for the computer");
@@ -59,4 +55,4 @@ function playGame() {
     }
 }
 
-playGame();
+playGame(think, cpu);
